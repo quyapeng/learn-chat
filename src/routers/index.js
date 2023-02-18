@@ -1,6 +1,6 @@
 import KoaRouter from "koa-router";
 import { OpenAiController } from "../controller/openaiController.js";
-import { ChatgptController } from "../controller/chatgptController.js";
+import { ChatGPTController } from "../controller/ChatGPTController.js";
 export const router = new KoaRouter();
 router.post("/generateImage", async (ctx) => {
   const openaiController = new OpenAiController(ctx);
@@ -24,4 +24,7 @@ router.post("/generateImage", async (ctx) => {
   // };
 });
 
-router.post();
+router.post("/conversation", async (ctx) => {
+  const chatGPTController = new ChatGPTController(ctx);
+  await chatGPTController.conversation(ctx);
+});
